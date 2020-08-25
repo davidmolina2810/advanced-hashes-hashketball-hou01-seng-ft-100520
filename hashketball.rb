@@ -223,12 +223,14 @@ def player_stats(player)
 end
 
 def big_shoe_rebounds
-  rebounds = -1
+  rebounds = nil
+  shoe_size = -1
   game_hash.each do |key, value|
     value.each do |inner_key, inner_value|
       if inner_value.class == Array && inner_value.length > 2
         inner_value.each do |x|
-          if x[:rebounds] > rebounds
+          if x[:shoe] > shoe_size
+            shoe_size = x[:shoe]
             rebounds = x[:rebounds]
           end
         end
