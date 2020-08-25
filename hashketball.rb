@@ -208,7 +208,7 @@ def player_stats(player)
   stats = nil
   game_hash.each do |key, value|
     value.each do |inner_key, inner_value|
-      if inner_value.class == 'Array' && inner_value.length > 2
+      if inner_value.class == Array && inner_value.length > 2
         inner_value.each do |x|
           x.each do |stat, val|
             if x[:player_name] == player
