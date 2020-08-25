@@ -221,3 +221,19 @@ def player_stats(player)
   end
   stats
 end
+
+def big_shoe_rebounds
+  rebounds = -1
+  game_hash.each do |key, value|
+    value.each do |inner_key, inner_value|
+      if inner_value.class == Array && inner_value.length > 2
+        inner_value.each do |x|
+          if x[:rebounds] > rebounds
+            rebounds = x[:rebounds]
+          end
+        end
+      end
+    end
+  end
+  rebounds
+end
