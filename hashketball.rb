@@ -127,3 +127,79 @@ def game_hash
 end
 
 # Write code here
+def num_points_scored(player)
+  points = 0
+  game_hash[:home][:players].each do |hash|
+    hash.each do |key, value|
+      if value == player
+        points = hash[:points]
+      end
+    end
+  end
+  game_hash[:away][:players].each do |hash|
+    hash.each do |key, value|
+      if value == player
+        points = hash[:points]
+      end
+    end
+  end
+  points
+end
+
+def shoe_size(player)
+  size = 0
+  game_hash[:home][:players].each do |hash|
+    hash.each do |key, value|
+      if value == player
+        size = hash[:shoe]
+      end
+    end
+  end
+  game_hash[:away][:players].each do |hash|
+    hash.each do |key, value|
+      if value == player
+        size = hash[:shoe]
+      end
+    end
+  end
+  size
+end
+
+def team_colors(team)
+  colors = []
+  if game_hash[:home][:team_name] == team
+    colors = game_hash[:home][:colors]
+  end
+  if game_hash[:away][:team_name] == team
+    colors = game_hash[:away][:colors]
+  end
+  colors
+end
+
+def team_names
+  [game_hash[:home][:team_name],
+  game_hash[:away][:team_name]]
+end
+
+def player_numbers(team)
+  nums = []
+  if team == "Brooklyn Nets"
+    game_hash[:home][:players].each do |x|
+      x.each do |stat, val|
+        if stat == :number
+          nums << x[stat]
+        end
+      end
+    end
+  end
+  if team == "Charlotte Hornets"
+    game_hash[:away][:players].each do |x|
+      x.each do |stat, val|
+        if stat == :number
+          nums << x[stat]
+        end
+      end
+    end
+  end
+  nums
+end
